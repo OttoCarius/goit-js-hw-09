@@ -21,9 +21,6 @@ const {
   fields: document.querySelector('.field'),
 };
 
-// markup
-fields.parentElement.style.display = 'flex';
-
 let intervalId;
 
 const options = {
@@ -41,3 +38,57 @@ const options = {
     addAttributeDisabled(startBtn, false);
   },
 };
+
+const flatPickrForm = flatpickr(flatpickrInput, options);
+
+startBtn.addEventListener('click', () => {
+  addAttributeDisabled(startBtn, true);
+
+  intervalId = setInterval(() => {
+    const timeDelta = flatPickrForm.selectedDates[0].getTime() - Date.now();
+    //To stop timer when it hits 0
+    if (timeDelta <= 0) {
+      clearInterval(intervalId);
+      return;
+    }
+    const convertedDelta = convertMs(timeDelta);
+
+    changeTextContent(daysValue, convertedDelta, 'days');
+    changeTextContent(hoursValue, convertedDelta, 'hours');
+    changeTextContent(minutesValue, convertedDelta, 'minutes');
+    changeTextContent(secondsValue, convertedDelta, 'seconds');
+
+    console.log(convertedDelta);
+  }, 1000);
+});
+
+function convertMs(ms) {
+  // Number of milliseconds per unit of time
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  // Remaining days
+  const days = Math.floor(ms / day);
+  // Remaining hours
+  const hours = Math.floor((ms % day) / hour);
+  // Remaining minutes
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  // Remaining seconds
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+
+  return { days, hours, minutes, seconds };
+}
+
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
+}
+
+function addAttributeDisabled(elem, value) {
+  elem.disabled = value;
+}
+
+function changeTextContent(elem, obj, units) {
+  elem.textContent = addLeadingZero(obj[units]);
+}

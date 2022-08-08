@@ -16,3 +16,86 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.field {
+  font-family: sans-serif;
+  color: rgb(20, 139, 139);
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+.value {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 40px;
+}
+.timer {
+  display: flex;
+  text-align: center;
+}
+
+.input {
+  color: #d8d8d8;
+  padding: 10px;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-family: Verdana;
+  background: rgb(6, 126, 134);
+}
+
+#datetime-picker {
+  color: #fff;
+  background-color: #2e3030;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #1f6854,
+    0 0 40px #185a50, 0 0 55px #117477, 0 0 70px #0c6d70, 0 0 90px #0a6161;
+  box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+}
+
+.btn {
+  color: rgb(255, 255, 255);
+  font-size: 19px;
+  line-height: 19px;
+  padding: 16px;
+  border-radius: 14px;
+  font-family: Georgia, serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(28, 164, 141) 0%,
+    rgb(35, 197, 203) 50%,
+    rgb(32, 95, 79) 100%
+  );
+  box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+  border: 2px solid rgb(51, 99, 87);
+  display: inline-block;
+}
+.myButton:hover {
+  background: #0c6337;
+}
+.myButton:active {
+  background: #10ad98;
+}
+
+.input-task-3 {
+  color: #d8d8d8;
+  padding: 10px;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-family: Verdana;
+  background: rgb(6, 126, 134);
+}
+
+label {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  color: #1f6854;
+}

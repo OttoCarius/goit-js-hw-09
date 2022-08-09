@@ -43,12 +43,14 @@ const flatPickrForm = flatpickr(flatpickrInput, options);
 
 startBtn.addEventListener('click', () => {
   addAttributeDisabled(startBtn, true);
-
+  addAttributeDisabled(flatpickrInput, true);
   intervalId = setInterval(() => {
     const timeDelta = flatPickrForm.selectedDates[0].getTime() - Date.now();
     //To stop timer when it hits 0
-    if (timeDelta <= 0) {
+    if (timeDelta < 0) {
       clearInterval(intervalId);
+      addAttributeDisabled(startBtn, false);
+      addAttributeDisabled(flatpickrInput, false);
       return;
     }
     const convertedDelta = convertMs(timeDelta);
